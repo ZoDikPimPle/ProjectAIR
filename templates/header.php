@@ -3,12 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Авиаперевозки
-    </title>
-    <link rel="stylesheet" href="public/css/style.css">
+    <title>Авиаперевозки</title>
+    <link rel="stylesheet" href="/public/style.css">
 </head>
 <body>
-<header>
-    <h2>Мой сайт</h2>
-</header>
-<main>
+    <header>
+        <h1>Авиаперевозки</h1>
+    </header>
