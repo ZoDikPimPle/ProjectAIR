@@ -1,6 +1,9 @@
-<?php
-require 'include/config.php';
-require 'templates/header.php';
-?>
-<h1>Добро пожаловать в мой проект!</h1>
-<?php require 'templates/footer.php'; ?>
+<?php include 'templates/header.php'; ?>
+
+<h1>Главная страница</h1>
+<ul>
+    <li><a href="pages/flights.php">Просмотреть рейсы</a></li>
+    <li><a href="pages/temp_table.php">Временная таблица</a></li>
+</ul>
+
+<?php include 'templates/footer.php'; ?>
