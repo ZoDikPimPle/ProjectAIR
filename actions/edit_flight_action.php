@@ -13,7 +13,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     editFlight($pdo, $flight_number, $departure_time, $arrival_time, $departure_airport, $arrival_airport, $status, $aircraft_type_code);
 
-    // Перенаправляем на страницу с рейсами
-    header('Location: ../pages/flights.php');
+    echo "success";
 }
 ?>
