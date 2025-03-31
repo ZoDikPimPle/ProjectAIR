@@ -10,6 +10,20 @@ $arrival_airport = isset($_GET['arrival_airport']) ? $_GET['arrival_airport'] : 
 
 // Получаем данные о рейсах с учетом фильтров
 $flights = getFlights($pdo, $sort, $departure_airport, $arrival_airport);
+
+// Массив для перевода статусов, чтоб БД не менять
+$statusTranslations = [
+    'Scheduled' => 'Запланирован',
+    'Delayed' => 'Задержан',
+    'Cancelled' => 'Отменен',
+    'Completed' => 'Завершен'
+];
+
+// Функция для форматирования даты
+function formatDate($dateTime) {
+    $date = new DateTime($dateTime);
+    return $date->format('d.m.Y');
+}
 ?>
 
 <h1>Информация о рейсах</h1>
@@ -53,11 +67,11 @@ $flights = getFlights($pdo, $sort, $departure_airport, $arrival_airport);
     <?php foreach ($flights as $flight): ?>
         <tr>
             <td><?php echo $flight['flight_number']; ?></td>
-            <td><?php echo $flight['departure_time']; ?></td>
-            <td><?php echo $flight['arrival_time']; ?></td>
+            <td><?php echo formatDate($flight['departure_time']); ?></td>
+            <td><?php echo formatDate($flight['arrival_time']); ?></td>
             <td><?php echo $flight['departure_airport']; ?></td>
             <td><?php echo $flight['arrival_airport']; ?></td>
-            <td><?php echo $flight['status']; ?></td>
+            <td><?php echo $statusTranslations[$flight['status']]; ?></td>
             <td>
                 <button onclick="toggleEditForm('<?php echo $flight['flight_number']; ?>')">Редактировать</button>
                 <button onclick="deleteFlight('<?php echo $flight['flight_number']; ?>')">Удалить</button>
